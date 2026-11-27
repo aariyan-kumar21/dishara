@@ -1,10 +1,10 @@
-# 🇮🇳 Dishaara — Bharat Safe Yatra
+# Dishaara — Bharat Safe Yatra
 
 > **India's Intelligent Union Territory Tourism & Safety Platform** (Smart India Hackathon 2026)
 >
 > *Discover. Plan. Book. Navigate. Stay Safe.*
 
-🌐 **[Live Website →](https://dishaara.vercel.app/)**
+ **[Live Website →](https://dishaara.vercel.app/)**
 
 ---
 
@@ -19,14 +19,11 @@
 7. [API Overview](#7--api-overview)
 8. [Data Model](#8--data-model)
 9. [Data Integrity & Verification](#9--data-integrity--verification)
-10. [Security & Safety Principles](#10--security--safety-principles)
-11. [SIH Demo Journey](#11--sih-demo-journey)
-12. [Project Documentation](#12--project-documentation)
-13. [Roadmap](#13--roadmap)
+10. [Roadmap](#13--roadmap)
 
 ---
 
-## 1. 🎯 Problem Statement
+## 1. Problem Statement
 
 Tourists visiting India's eight Union Territories have no single, reliable place to plan and manage a trip. A typical traveller juggles Google Search for destinations, Google Maps for navigation, booking sites for stays, airline and transport sites, government portals for permits, weather apps, social media for recommendations, separate festival sites, and emergency services that are disconnected from everything else.
 
@@ -43,7 +40,7 @@ This creates six core problems:
 
 ---
 
-## 2. 💡 How Dishaara Solves It
+## 2. How Dishaara Solves It
 
 Dishaara is a **single tourism intelligence platform** covering all 8 Union Territories. A tourist can complete the whole journey without leaving the platform:
 
@@ -64,7 +61,7 @@ Discover → Understand → Plan → Modify → See the route → Check live con
 
 ---
 
-## 3. ✨ Features
+## 3. Features
 
 ### Discovery & Destination Intelligence
 - **Cinematic home page** with a hero carousel of all 8 UTs (weather, best travel period, rating)
@@ -119,42 +116,11 @@ Discover → Understand → Plan → Modify → See the route → Check live con
 
 ---
 
-## 4. 🧰 Tech Stack & Workflow
+## 4. Tech Stack & Workflow
 
 ### 4.1 End-to-end workflow
+<img width="2352" height="1233" alt="workflow" src="https://github.com/user-attachments/assets/c270c7f9-1573-440a-a3a3-ad6d753429bc" />
 
-```mermaid
-flowchart TD
-    U[User - Web Browser] --> FE[Next.js + TypeScript Frontend]
-    FE -->|HTTPS / REST /api/v1| API[Backend API Layer]
-
-    API --> TS[Tourism Service]
-    API --> IS[Itinerary Service]
-    API --> BS[Booking Service]
-    API --> SS[Safety Service]
-    API --> MS[Map & Route Service]
-    API --> WS[Weather Service]
-    API --> AI[Yatra AI Engine]
-
-    AI --> LLM[LLM]
-    AI --> RAG[RAG over verified data]
-    AI --> TOOLS[Internal Tools]
-    TOOLS --> TS
-    TOOLS --> IS
-    TOOLS --> MS
-    TOOLS --> SS
-
-    TS --> DB[(PostgreSQL + PostGIS + pgvector)]
-    IS --> DB
-    SS --> DB
-    RAG --> DB
-    API --> CACHE[(Redis Cache)]
-
-    MS --> MAPS[Mapbox]
-    WS --> WX[Weather Provider]
-    BS --> PROV[Booking Providers]
-    TS --> GOV[Official Government Data]
-```
 
 ### 4.2 Data workflow (Verified Data → Intelligence → Experience)
 
@@ -217,7 +183,7 @@ Hospital · Police · Fire · Official contacts → Emergency UI (call, location
 
 ---
 
-## 5. 📁 Repository Structure
+## 5. Repository Structure
 
 ```text
 SIH-main/
@@ -256,7 +222,7 @@ The decoupled `frontend/` and `backend/` projects communicate over REST, and the
 
 ---
 
-## 6. 🗺️ Union Territory References
+## 6. Union Territory References
 
 All tourism data follows a strict **source hierarchy**:
 
@@ -325,7 +291,7 @@ Use the current official name **Sri Vijaya Puram** (formerly Port Blair) as the 
 
 ---
 
-## 7. 🔌 API Overview
+## 7. API Overview
 
 The backend serves REST + JSON under `/api/v1` with a standard response envelope:
 
@@ -363,7 +329,7 @@ The backend serves REST + JSON under `/api/v1` with a standard response envelope
 
 ---
 
-## 8. 🗄️ Data Model
+## 8. Data Model
 
 The Phase 3 schema defines **52 tables** (PostgreSQL + PostGIS + pgvector):
 
@@ -384,7 +350,7 @@ Key decisions: UUID primary keys, WGS 84 (EPSG:4326) coordinates, GIST spatial i
 
 ---
 
-## 9. ✅ Data Integrity & Verification
+## 9. Data Integrity & Verification
 
 - **No invented data.** Unverifiable values are marked `NOT VERIFIED` or stored as `NULL`. Unannounced dates are `TBD`, and dynamic prices are flagged `provider_api_required`.
 - **Verification statuses:** `PENDING_REVIEW` · `VERIFIED` · `OUTDATED` · `REJECTED` · `DISABLED`
@@ -396,47 +362,7 @@ Key decisions: UUID primary keys, WGS 84 (EPSG:4326) coordinates, GIST spatial i
 
 ---
 
-## 10. 🔐 Security & Safety Principles
-
-- Secret API keys stay on the server and are never exposed to the browser
-- Validate every request, rate-limit public endpoints, and sanitise user content
-- AI tools are permission-gated (`READ` / `WRITE` / `TRANSACTIONAL` / `EMERGENCY`), and bookings require explicit user confirmation
-- The SOS path is deterministic and independent of the AI service
-- Integrations are only called "live" when legitimate API access exists, and demo providers are clearly separated
-- Location data, emergency contacts and bookings are private and need strict access control and retention rules
-- External calls use timeouts, retries, caching and fallbacks with user-friendly errors
-
----
-
-## 11. 🎬 SIH Demo Journey
-
-> A tourist wants to visit Ladakh for 6 days with a ₹50,000 budget.
-
-1. Ask **Yatra AI**, which generates `Leh → Nubra → Pangong → Leh`
-2. **Add to My Yatra** and the itinerary appears
-3. **Open Map** to see the 3D route
-4. **Change 6 days → 8 days** and the itinerary is reorganised automatically
-5. Simulate a **weather warning near Pangong**, and Yatra AI proposes an alternative
-6. Open **Yatra Mode** to see the live route
-7. Press **SOS** to see the nearest emergency facilities
-
-This shows **AI + Database + Maps + Real-time Data + Safety + Itinerary** working together.
-
----
-
-## 12. 📚 Project Documentation
-
-| Phase | Document | Covers |
-|---|---|---|
-| 1 | Product Requirements Document | Vision, users, modules, MVP, success metrics |
-| 2 | Technical Architecture | System design, AI/RAG, maps, booking, SOS, security, deployment |
-| 3 | Database Schema | Tables, enums, PostGIS, pgvector, indexing, integrity rules |
-| 4 | API Specification | REST contract, auth, rate limits, AI tools, booking, admin |
-| 5 | UT Tourism Data Research & Knowledge Base | Verified, source-backed data for all 8 UTs and seeding rules |
-
----
-
-## 13. 🛣️ Roadmap
+## 10. Roadmap
 
 **MVP (SIH)**
 - [x] All 8 Union Territories
