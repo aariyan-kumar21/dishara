@@ -372,16 +372,13 @@ Key decisions: UUID primary keys, WGS 84 (EPSG:4326) coordinates, GIST spatial i
 - [x] Emergency facilities and SOS
 - [x] Booking integration architecture
 - [x] Responsive web interface
+- [x] Share My Yatra
 
-**Should have**
+**Future**
 - [ ] Offline itinerary
 - [ ] Budget planner and packing assistant
 - [ ] Live travel alerts and Yatra Mode
-- [ ] Share My Yatra
 - [ ] Culture guide, food discovery and readiness score
-
-**Future**
-- [ ] Move to the NestJS + PostgreSQL/PostGIS/pgvector target architecture
 - [ ] Mobile app and expansion to all Indian states
 - [ ] Voice navigation and multilingual voice assistant
 - [ ] Advanced personalisation, tourism analytics and AR experiences
