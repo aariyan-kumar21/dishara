@@ -5,7 +5,6 @@
 > *Discover. Plan. Book. Navigate. Stay Safe.*
 
  **[Live Website →](https://dishaara.vercel.app/)**
-
 ---
 
 ## 📖 Table of Contents
@@ -391,5 +390,6 @@ Key decisions: UUID primary keys, WGS 84 (EPSG:4326) coordinates, GIST spatial i
 
 <p align="center">
   <b>Dishaara — Bharat Safe Yatra</b><br/>
-  <i>Discover. Plan. Book. Navigate. Stay Safe.</i>
+  <i>Discover. Plan. Book. Navigate. Stay Safe.</i> <br>
+      Off campus code - 7A6SJU
 </p>
